@@ -1,9 +1,6 @@
 package Daining.UserInformation.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +13,10 @@ import java.util.Date;
 @Entity
 @Table(name = "USERINFORMATION", schema = "DAINING")
 public class UserInformation {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userinformation_seq_gen")
+    @SequenceGenerator(name = "userinformation_seq_gen", sequenceName = "DAINING.USERINFORMATION_SEQ", allocationSize = 1)
     @Column(name = "ID")
     private Long id;
 
