@@ -193,6 +193,18 @@ public class UserinformationServiceImpl implements UserInformationService {
         return responseDTO;
     }
 
+    @Override
+    public UserInformationDTO getUser(Long id) {
+       try {
+           UserInformation userInformation=userInfoRepo.findById(id).orElse(null);
+           UserInformationDTO userInformationDTO=maptoDTO(userInformation);
+           return userInformationDTO;
+       }
+       catch (Exception e){
+           throw new RuntimeException("User not found with id:"+ id, e);
+       }
+    }
+
     private static final Set<String> ALLOWED_FIELDS = Set.of(
             "firstName",
             "lastName",
@@ -236,6 +248,11 @@ public class UserinformationServiceImpl implements UserInformationService {
 
         // Return the first 20 characters of the hash in uppercase
         return hexString.substring(0, 20).toUpperCase();
+    }
+
+    @Override
+    public String getUserPasswordByusername(String username) {
+        return userInfoRepo.getUserPasswordByusername(username);
     }
 
 

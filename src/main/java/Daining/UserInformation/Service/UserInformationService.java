@@ -22,6 +22,10 @@ public interface UserInformationService {
     ResponseModelDTO updateUserPatchDynamic(Long id, Map<String, Object> updates)
             throws NoSuchAlgorithmException;
 
+    UserInformationDTO getUser(Long id);
+
+    String getUserPasswordByusername(String username);
+
 
 
 }

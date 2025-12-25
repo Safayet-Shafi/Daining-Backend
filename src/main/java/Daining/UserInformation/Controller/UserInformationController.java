@@ -61,6 +61,12 @@ public class UserInformationController {
         return userInformationService.updateUserPatchDynamic(id, updates);
     }
 
+    @GetMapping("/userId/{id}")
+    public UserInformationDTO getUserById(@PathVariable Long id){
+        return userInformationService.getUser(id);
+
+    }
+
 
 
 }
